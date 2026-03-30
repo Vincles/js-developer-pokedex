@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Font Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
+
+    <!-- Nosso CSS -->
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/pokedex.css">
+    <link rel="stylesheet" href="/assets/css/tema.css">
+    <link rel="stylesheet" href="/assets/css/search.css">
+    <link rel="stylesheet" href="/assets/css/details.css">
+</head>
+
+<body>
+    <section class="content">
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round">
+                <img class="icon sun" src="images/PokeBallIcon.png" alt="">
+                <img class="icon moon" src="images/ultraball.png" alt="">
+            </div>
+        </label>
+    </div>
+    <h1> <img class="logo" src="images/splash.png" alt="logo"></h1>
+
+        <ol id="pokemonList" class="pokemons">
+                </ol>
+             </li>
+        </ol>
+    </section>
+    <div id="fab-container" class="fab-container">
+    
+    <div id="fab-options" class="fab-options">
+        <div class="search-container">
+        <input type="text" id="pokemon-search" placeholder="Buscar por nome...">
+    </div>
+    <button class="type-filter" data-type="grass" title="Grama">🌿</button>
+    <button class="type-filter" data-type="fire" title="Fogo">🔥</button>
+    <button class="type-filter" data-type="water" title="Água">💧</button>
+    <button class="type-filter" data-type="electric" title="Raio">⚡</button>
+    
+    <button class="type-filter" data-type="bug" title="Inseto">🐞</button>
+    <button class="type-filter" data-type="poison" title="Veneno">☠️</button>
+    <button class="type-filter" data-type="ground" title="Terra">⛰️</button>
+    <button class="type-filter" data-type="rock" title="Pedra">🪨</button>
+    
+    <button class="type-filter" data-type="fighting" title="Lutador">🥊</button>
+    <button class="type-filter" data-type="psychic" title="Psíquico">🔮</button>
+    <button class="type-filter" data-type="ghost" title="Fantasma">👻</button>
+    
+    <button class="type-filter" data-type="dragon" title="Dragão">🐲</button>
+    <button class="type-filter" data-type="fairy" title="Fada">✨</button>
+    <button class="type-filter" data-type="ice" title="Gelo">❄️</button>
+    
+    <button class="type-filter" data-type="normal" title="Normal">🔘</button>
+    <button class="type-filter" data-type="all" title="Todos">🔄</button>
+</div>
+
+    <button id="fab-main-btn" class="fab-main-btn">
+        <div class="filter-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+</div>
+
+    <!-- Nosso JS -->
+     <script src="/assets/js/pokemon-model.js"></script>
+     <script src="/assets/js/poke-api.js"></script>
+     <script src="/assets/js/modal-details.js" defer></script>
+     <script src="/assets/js/main.js"></script>
+     <script src="/assets/js/search.js"></script>
+
+     <div id="modal-overlay" class="modal-overlay hidden">
+    <div id="pokemon-details-modal" class="modal">
+        
+        <header class="modal-header">
+            <button id="close-modal" class="close-modal">&larr;</button>
+            <div class="modal-basic-info">
+                <span id="modal-pokemon-number" class="pokemon-number"></span>
+                <h2 id="modal-pokemon-name" class="pokemon-name"></h2>
+                <div id="modal-pokemon-types" class="pokemon-types">
+                    </div>
+            </div>
+            <p id="modal-pokemon-flame" class="flame-pokemon"></p>
+            <div class="modal-image-container">
+                <img id="modal-pokemon-image" src="" alt="">
+            </div>
+        </header>
+        
+        <div class="modal-body">
+            <nav class="modal-tabs">
+                <button class="tab-link active" data-tab="about">About</button>
+                <button class="tab-link" data-tab="evolution">Evolution</button>
+            </nav>
+            
+            <div id="tab-content" class="tab-content">
+                <div id="about" class="tab-panel active">
+    
+    <div class="info-table">
+        <div class="info-row">
+            <span class="label">Species</span>
+            <span class="value" id="val-species"></span>
+        </div>
+        <div class="info-row">
+            <span class="label">Height</span>
+            <span class="value" id="val-height"></span>
+        </div>
+        <div class="info-row">
+            <span class="label">Weight</span>
+            <span class="value" id="val-weight"></span>
+        </div>
+        <div class="info-row">
+            <span class="label">Abilities</span>
+            <span class="value" id="val-abilities"></span>
+        </div>
+    </div>
+
+    <div class="stats-section">
+        <h3>Base Stats</h3>
+        <div id="stats-container">
+            </div>
+    </div>
+</div>
+                </div>
+                <div id="evolution" class="tab-panel">
+    <div id="evolution-chain-container" class="evolution-container">
+        </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

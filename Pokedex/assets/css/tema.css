@@ -1,0 +1,105 @@
+:root {
+  --bg-color: #e4e4e4;
+}
+
+body.dark-mode {
+  --bg-color: #222;
+}
+
+body {
+  background-color: var(--bg-color);
+  transition: background 0.3s ease;
+}
+
+
+.theme-switch-wrapper {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column-reverse;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+  margin: 0.5rem 1rem 0 0;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+  z-index: 2;
+}
+
+input:checked + .slider {
+  background-color: #070606;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+  .icon {
+  width: 20px; 
+  height: 20px;
+  position: absolute;
+  top: 50%; 
+  transform: translateY(-50%);
+  z-index: 1;
+  transition: opacity 0.4s ease; 
+  object-fit: contain; 
+}
+
+.icon.sun {
+  opacity: 1;
+  right: 7px;
+}
+
+.icon.moon {
+  opacity: 0;
+  transition: opacity 0.4s;
+  width: 25px; 
+  height: 25px;
+}
+
+input:checked + .slider .icon.sun {
+  opacity: 1;
+}
+
+input:checked + .slider .icon.moon {
+  opacity: 1;
+}

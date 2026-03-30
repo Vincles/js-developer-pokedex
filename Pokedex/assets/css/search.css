@@ -1,0 +1,123 @@
+
+.fab-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column-align;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.fab-main-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #7e00f5;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.fab-main-btn:hover {
+    transform: scale(1.05);
+}
+
+.filter-icon {
+    width: 24px;
+    height: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.filter-icon span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.fab-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 5px;
+    background-color: #3333338c;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0); 
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+    margin-bottom: 10px; 
+}
+
+.fab-container.active .fab-options {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.type-filter {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #ffffff8f;
+    color: #333;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.type-filter:hover {
+    transform: scale(1.1);
+    background-color: #f0f0f0;
+}
+
+.fab-container.active .fab-main-btn {
+    background-color: #333;
+}
+
+.fab-container.active .filter-icon span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.fab-container.active .filter-icon span:nth-child(2) {
+    opacity: 0;
+}
+
+.fab-container.active .filter-icon span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.search-container {
+    grid-column: span 4;
+    margin-bottom: 10px;
+}
+
+#pokemon-search {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.fab-options {
+    min-width: 220px; 
+}

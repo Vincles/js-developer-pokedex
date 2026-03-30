@@ -1,0 +1,40 @@
+* {
+    font-family: 'roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/pokeball_logo_by_pedronex_d93bs8z-pre.png');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: 200px;
+  background-origin: content-box;
+  z-index: -1;
+  pointer-events: none;
+  margin: 1rem;
+}
+
+.content.dark-mode::before,
+.content.dark-mode .pokemon-card::after {
+  opacity: 0.5;
+}
+
+.content {
+    width: 100vw;
+    height: 100vh;
+    padding: 1rem;
+    position: relative;
+    
+}
+
+@media screen and (min-width: 992px) {
+    .content {
+        max-width: 992px;
+        height: auto;
+        margin: 1rem auto;
+        border-radius: 1rem;
+    }  
+}
