@@ -5,7 +5,6 @@ const btnClose = document.getElementById("close-modal");
 const tabLinks = document.querySelectorAll(".tab-link");
 const tabPanels = document.querySelectorAll(".tab-panel");
 
-
 function closeModal() {
     modalOverlay.classList.remove("open");
 }
@@ -95,7 +94,6 @@ evoContainer.innerHTML = evolutionChain.map((step, index) => {
     `;
 }).join('');
 
-        // --- 1. Info do Cabeçalho ---
         modalHeader.style.backgroundColor = getPokemonColorByType(pokemonData.type);
         document.getElementById("modal-pokemon-number").textContent = `#${String(id).padStart(3, '0')}`;
         document.getElementById("modal-pokemon-name").textContent = pokemonData.name;
@@ -105,26 +103,21 @@ evoContainer.innerHTML = evolutionChain.map((step, index) => {
         const typesContainer = document.getElementById("modal-pokemon-types");
         typesContainer.innerHTML = pokemonData.types.map(type => `<span class="type ${type}">${type}</span>`).join('');
 
-        // Cálculos de Altura (DM para M e FT)
         const heightM = pokemonData.height / 10;
         const totalInches = heightM * 39.37;
         const feet = Math.floor(totalInches / 12);
         const inches = (totalInches % 12).toFixed(1);
         
-        // Cálculos de Peso (HG para KG e LBS)
         const weightKg = pokemonData.weight / 10;
         const weightLbs = (weightKg * 2.204).toFixed(1);
 
-        // Habilidades
         const abilities = pokemonData.abilities.map(a => a.ability.name).join(', ');
 
-        // Preencher Tabela About
         document.getElementById("val-species").textContent = getGenera(speciesData);
         document.getElementById("val-height").textContent = `${(heightM * 100).toFixed(0)} cm (${feet}'${inches}")`;
         document.getElementById("val-weight").textContent = `${weightKg.toFixed(1)} kg (${weightLbs} lbs)`;
         document.getElementById("val-abilities").textContent = abilities;
 
-        // --- 3. Base Stats (Gráfico de Barras) ---
         const statsContainer = document.getElementById("stats-container");
         
         statsContainer.innerHTML = pokemonData.stats.map(stat => {
